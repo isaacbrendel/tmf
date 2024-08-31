@@ -1,3 +1,6 @@
-from django.shortcuts import render
+# feedback/views.py
 
-# Create your views here.
+from django.http import HttpResponse
+
+def feedback_list(request):
+    return HttpResponse("List of Feedback.")
