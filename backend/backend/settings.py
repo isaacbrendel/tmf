@@ -47,6 +47,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    
+    'grappelli',  # Grappelli admin interface
+    'dashboard',  # Dashboard
+
+    
 ]
 
 MIDDLEWARE = [
