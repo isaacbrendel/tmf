@@ -7,3 +7,6 @@ def transportation_list(request):
 
 def boarding_list(request):
     return HttpResponse("List of Horse Boarding services.")
+
+def index(request):
+    return HttpResponse("Welcome to the Services area.")
