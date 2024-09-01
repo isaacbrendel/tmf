@@ -1,9 +1,6 @@
-# members/urls.py
-
 from django.urls import path
-from . import views
+from .views import member_form_view
 
 urlpatterns = [
-    path('', views.index, name='members_index'),
-    # Add more paths as needed
+    path('member-form/', member_form_view, name='member_form'),
 ]

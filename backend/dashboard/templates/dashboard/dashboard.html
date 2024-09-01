@@ -5,18 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business Metrics Dashboard</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            margin-bottom: 10px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .card {
+            padding: 20px;
+            background-color: #e9e9e9;
+            border-radius: 8px;
+        }
+        .card h3 {
+            margin-bottom: 15px;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            padding: 10px;
+            color: #666;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h1>Business Metrics Dashboard</h1>
-    
-    <h2>Horse Transportation Distance Over Time</h2>
-    <div>{{ transport_graph|safe }}</div>
-    
-    <h2>Horse Boarding - Number of Animals Over Time</h2>
-    <div>{{ boarding_graph|safe }}</div>
-    
-    <h2>Feedback Distribution</h2>
-    <div>{{ feedback_graph|safe }}</div>
-    
+    <header>
+        <h1>Business Metrics Dashboard</h1>
+    </header>
+    <div class="container">
+        <!-- Data Visualizations -->
+        <div class="grid">
+            <div class="card">
+                <h3>Horse Transportation Data Points</h3>
+                <div>{{ transport_scatter|safe }}</div>
+            </div>
+            <div class="card">
+                <h3>Horse Boarding Data Points</h3>
+                <div>{{ boarding_scatter|safe }}</div>
+            </div>
+            <div class="card">
+                <h3>Feedback Data Points</h3>
+                <div>{{ feedback_scatter|safe }}</div>
+            </div>
+        </div>
+
+        <!-- Forms -->
+        <h2>Manage Data</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Add Horse Transportation Data</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ transport_form.as_p }}
+                    <button type="submit" name="transport_form">Submit</button>
+                </form>
+            </div>
+            <div class="card">
+                <h3>Add Horse Boarding Data</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ boarding_form.as_p }}
+                    <button type="submit" name="boarding_form">Submit</button>
+                </form>
+            </div>
+            <div class="card">
+                <h3>Add Feedback</h3>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ feedback_form.as_p }}
+                    <button type="submit" name="feedback_form">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
 </body>
 </html>

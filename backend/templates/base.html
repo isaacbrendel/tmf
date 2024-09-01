@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dashboard{% endblock %}</title>
+    <style>
+        .tab-buttons {
+            margin-bottom: 20px;
+        }
+        .tab-buttons a {
+            margin-right: 10px;
+            padding: 10px;
+            background-color: #ddd;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .tab-buttons a.active {
+            background-color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab-buttons">
+        <a href="{% url 'member_form' %}" class="{% if request.resolver_match.url_name == 'member_form' %}active{% endif %}">Members</a>
+        <a href="{% url 'transportation_form' %}" class="{% if request.resolver_match.url_name == 'transportation_form' %}active{% endif %}">Transportation</a>
+        <a href="{% url 'boarding_form' %}" class="{% if request.resolver_match.url_name == 'boarding_form' %}active{% endif %}">Boarding</a>
+        <a href="{% url 'feedback_form' %}" class="{% if request.resolver_match.url_name == 'feedback_form' %}active{% endif %}">Feedback</a>
+    </div>
+
+    {% block content %}{% endblock %}
+</body>
+</html>

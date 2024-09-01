@@ -1,11 +1,7 @@
-# services/urls.py
-
 from django.urls import path
-from . import views
+from .views import transportation_form_view, boarding_form_view
 
 urlpatterns = [
-    path('transportation/', views.transportation_list, name='transportation_list'),
-    path('boarding/', views.boarding_list, name='boarding_list'),
-    path('', views.index, name='services_index'),
-    # Add more paths as needed
+    path('', transportation_form_view, name='transportation_form'),
+    path('boarding-form/', boarding_form_view, name='boarding_form'),
 ]
