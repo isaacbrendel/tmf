@@ -1,0 +1,31 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Services</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Company</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'members:client_member_view' %}">Members</a></li>
+                <li><a href="{% url 'services:client_services_view' %}">Services</a></li>
+                <li><a href="{% url 'feedback:client_feedback_view' %}">Feedback</a></li>
+                
+            </ul>
+        </nav>
+        
+    </header>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
+</body>
+</html>

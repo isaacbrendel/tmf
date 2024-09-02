@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect
 from .forms import HorseTransportationForm, HorseBoardingForm
 from .models import HorseTransportation, HorseBoarding  # Import the models
 from tasks.models import Task
+from django.contrib.auth.decorators import login_required
+
+
+
 
 def transportation_form_view(request):
     if request.method == 'POST':
@@ -43,6 +47,7 @@ def boarding_form_view(request):
 
     return render(request, 'services/boarding_form.html', {'form': form})
 
+@login_required
 def index(request):
     transportations = HorseTransportation.objects.all()  # Get all HorseTransportation objects
     boardings = HorseBoarding.objects.all()  # Get all HorseBoarding objects

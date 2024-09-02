@@ -1,0 +1,38 @@
+<!-- home/templates/home/services.html -->
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Our Services</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home:members' %}">Members</a></li>
+                <li><a href="{% url 'home:feedback' %}">Feedback</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Transportation Service Request</h2>
+        <form method="post" action="{% url 'services:transportation_form_view' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit Request</button>
+        </form>
+
+        <h2>Boarding Service Request</h2>
+        <form method="post" action="{% url 'services:boarding_form_view' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit Request</button>
+        </form>
+    </div>
+</body>
+</html>
