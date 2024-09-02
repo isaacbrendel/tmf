@@ -1,0 +1,15 @@
+<!-- employees/templates/employees/index.html -->
+{% extends 'base.html' %}
+
+{% block title %}Employees List{% endblock %}
+
+{% block content %}
+<h2>Employees List</h2>
+<ul>
+    {% for employee in employees %}
+        <li>{{ employee.name }} - {{ employee.role }}</li>
+    {% empty %}
+        <li>No employees available.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

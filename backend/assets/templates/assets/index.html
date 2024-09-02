@@ -1,0 +1,15 @@
+<!-- assets/templates/assets/index.html -->
+{% extends 'base.html' %}
+
+{% block title %}Assets List{% endblock %}
+
+{% block content %}
+<h2>Assets List</h2>
+<ul>
+    {% for asset in assets %}
+        <li>{{ asset.name }} - {{ asset.category }}</li>
+    {% empty %}
+        <li>No assets available.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

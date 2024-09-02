@@ -1,0 +1,15 @@
+<!-- feedback/templates/feedback/index.html -->
+{% extends 'base.html' %}
+
+{% block title %}Feedback List{% endblock %}
+
+{% block content %}
+<h2>Feedback List</h2>
+<ul>
+    {% for feedback in feedback_list %}
+        <li>{{ feedback.stars }} Stars - {{ feedback.category }}</li>
+    {% empty %}
+        <li>No feedback available.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

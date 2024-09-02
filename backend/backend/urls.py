@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
-from dashboard.views import dashboard_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -24,5 +23,8 @@ urlpatterns = [
     path("", include("services.urls")),
     path("feedback/", include("feedback.urls")),
     path('grappelli/', include('grappelli.urls')),  # Grappelli admin interface
-    path('dashboard/', dashboard_view, name='dashboard'),
+    path('dashboard/', include('dashboard.urls')),  # Dashboard
+    path("tasks/", include("tasks.urls")),
+    path("assets/", include("assets.urls")),
+    path("employees/", include("employees.urls")),
 ]

@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'members',
     'services',
     'feedback',
+    'tasks',
+    'assets',
+    'employees',
     
     "django.contrib.admin",
     "django.contrib.auth",

@@ -1,0 +1,15 @@
+<!-- tasks/templates/tasks/index.html -->
+{% extends 'base.html' %}
+
+{% block title %}Tasks List{% endblock %}
+
+{% block content %}
+<h2>Tasks List</h2>
+<ul>
+    {% for task in tasks %}
+        <li>{{ task.title }} - {{ task.status }}</li>
+    {% empty %}
+        <li>No tasks available.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

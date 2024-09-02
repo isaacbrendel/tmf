@@ -1,0 +1,31 @@
+<!-- services/templates/services/index.html -->
+{% extends 'base.html' %}
+
+{% block title %}Services Overview{% endblock %}
+
+{% block content %}
+<h2>Services Overview</h2>
+
+<h3>Horse Transportation</h3>
+<ul>
+    {% for transportation in transportations %}
+        <li>
+            {{ transportation.date }}: Transported {{ transportation.number_of_horses }} horses for {{ transportation.distance }} miles
+        </li>
+    {% empty %}
+        <li>No transportation records found.</li>
+    {% endfor %}
+</ul>
+
+<h3>Horse Boarding</h3>
+<ul>
+    {% for boarding in boardings %}
+        <li>
+            Boarding {{ boarding.number_of_animals }} animals from {{ boarding.start_date }}{% if boarding.end_date %} to {{ boarding.end_date }}{% else %} (Indefinite){% endif %}
+        </li>
+    {% empty %}
+        <li>No boarding records found.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

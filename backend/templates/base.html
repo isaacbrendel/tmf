@@ -1,33 +1,44 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Dashboard{% endblock %}</title>
-    <style>
-        .tab-buttons {
-            margin-bottom: 20px;
-        }
-        .tab-buttons a {
-            margin-right: 10px;
-            padding: 10px;
-            background-color: #ddd;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .tab-buttons a.active {
-            background-color: #aaa;
-        }
-    </style>
+    <title>Business Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <div class="tab-buttons">
-        <a href="{% url 'member_form' %}" class="{% if request.resolver_match.url_name == 'member_form' %}active{% endif %}">Members</a>
-        <a href="{% url 'transportation_form' %}" class="{% if request.resolver_match.url_name == 'transportation_form' %}active{% endif %}">Transportation</a>
-        <a href="{% url 'boarding_form' %}" class="{% if request.resolver_match.url_name == 'boarding_form' %}active{% endif %}">Boarding</a>
-        <a href="{% url 'feedback_form' %}" class="{% if request.resolver_match.url_name == 'feedback_form' %}active{% endif %}">Feedback</a>
+    <header>
+        <h1>Company Dashboard</h1>
+        <nav>
+            <ul>
+                {% if perms.members.view_member %}
+                <li><a href="{% url 'members:index' %}">Members</a></li>
+                {% endif %}
+                {% if perms.services.view_service %}
+                <li><a href="{% url 'services:index' %}">Services</a></li>
+                {% endif %}
+                {% if perms.feedback.view_feedback %}
+                <li><a href="{% url 'feedback:index' %}">Feedback</a></li>
+                {% endif %}
+                {% if perms.assets.view_asset %}
+                <li><a href="{% url 'assets:index' %}">Assets</a></li>
+                {% endif %}
+                {% if perms.tasks.view_task %}
+                <li><a href="{% url 'tasks:index' %}">Tasks</a></li>
+                {% endif %}
+                {% if perms.employees.view_employee %}
+                <li><a href="{% url 'employees:index' %}">Employees</a></li>
+                {% endif %}
+                {% if perms.dashboard.view_analytics %}
+                <li><a href="{% url 'dashboard:index' %}">Data/Analytics</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
     </div>
-
-    {% block content %}{% endblock %}
 </body>
 </html>
