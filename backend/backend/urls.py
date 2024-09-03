@@ -19,20 +19,17 @@ from django.urls import include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("members/", include("members.urls")),
-    path("", include("home.urls")),
-    path("feedback/", include("feedback.urls")),
+    path("", include("home.urls")),  # Public-facing home page
     path('grappelli/', include('grappelli.urls')),  # Grappelli admin interface
-    path('dashboard/', include('dashboard.urls')),  # Dashboard
-    path("tasks/", include("tasks.urls")),
-    path("assets/", include("assets.urls")),
-    path("employees/", include("employees.urls")),
-    
-    # Dashboard Section
-    path('dashboard/services/', include('services.urls')),
-    path('dashboard/feedback/', include('feedback.urls')),
-    path('dashboard/tasks/', include('tasks.urls')),
-    path('dashboard/assets/', include('assets.urls')),
-    path('dashboard/employees/', include('employees.urls')),
-    path('dashboard/', include('dashboard.urls')),  # Dashboard root
+
+    # Dashboard Section - Everything here is under dashboard
+    path('dashboard/', include([
+        path('', include('dashboard.urls')),  # Dashboard root
+        path('members/', include('members.urls')),  # Dashboard members
+        path('services/', include('services.urls')),  # Dashboard services
+        path('feedback/', include('feedback.urls')),  # Dashboard feedback
+        path('tasks/', include('tasks.urls')),  # Dashboard tasks
+        path('assets/', include('assets.urls')),  # Dashboard assets
+        path('employees/', include('employees.urls')),  # Dashboard employees
+    ])),
 ]

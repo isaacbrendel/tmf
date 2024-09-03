@@ -4,9 +4,6 @@ from .models import HorseTransportation, HorseBoarding  # Import the models
 from tasks.models import Task
 from django.contrib.auth.decorators import login_required
 
-
-
-
 def transportation_form_view(request):
     if request.method == 'POST':
         form = HorseTransportationForm(request.POST)
@@ -47,7 +44,7 @@ def boarding_form_view(request):
 
     return render(request, 'services/boarding_form.html', {'form': form})
 
-@login_required
+@login_required(login_url='employees:login')
 def index(request):
     transportations = HorseTransportation.objects.all()  # Get all HorseTransportation objects
     boardings = HorseBoarding.objects.all()  # Get all HorseBoarding objects

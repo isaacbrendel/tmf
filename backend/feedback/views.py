@@ -15,7 +15,7 @@ def feedback_form_view(request):
 
     return render(request, 'feedback/feedback_form.html', {'form': form})
 
-@login_required
+@login_required(login_url='employees:login')
 def index(request):
     feedback_list = Feedback.objects.all()
     return render(request, 'feedback/index.html', {'feedback_list': feedback_list})

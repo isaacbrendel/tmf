@@ -1,10 +1,10 @@
 {% extends 'home/index.html' %}
 
-{% block title %}Boarding Form{% endblock %}
+{% block title %}Feedback Form{% endblock %}
 
 {% block content %}
-<h2>Boarding Form</h2>
-<form method="post">
+<h2>Submit Feedback</h2>
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Submit</button>

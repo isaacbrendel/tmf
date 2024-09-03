@@ -4,41 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Dashboard</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %}Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard_style.css' %}">
 </head>
 <body>
+    {% if user.is_authenticated %}
     <header>
         <h1>Company Dashboard</h1>
         <nav>
             <ul>
-                {% if perms.members.view_member %}
                 <li><a href="{% url 'members:index' %}">Members</a></li>
-                {% endif %}
-                {% if perms.services.view_service %}
                 <li><a href="{% url 'services:index' %}">Services</a></li>
-                {% endif %}
-                {% if perms.feedback.view_feedback %}
                 <li><a href="{% url 'feedback:index' %}">Feedback</a></li>
-                {% endif %}
-                {% if perms.assets.view_asset %}
                 <li><a href="{% url 'assets:index' %}">Assets</a></li>
-                {% endif %}
-                {% if perms.tasks.view_task %}
                 <li><a href="{% url 'tasks:index' %}">Tasks</a></li>
-                {% endif %}
-                {% if perms.employees.view_employee %}
                 <li><a href="{% url 'employees:index' %}">Employees</a></li>
-                {% endif %}
-                {% if perms.dashboard.view_analytics %}
                 <li><a href="{% url 'dashboard:index' %}">Data/Analytics</a></li>
-                {% endif %}
             </ul>
         </nav>
     </header>
+    {% endif %}
     <div class="container">
-        {% block content %}
-        {% endblock %}
+        {% block content %}{% endblock %}
     </div>
 </body>
 </html>

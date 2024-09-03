@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'members.CustomUser'
 
+# settings.py
+LOGIN_URL = 'employees:login'
+
 
 # Application definition
 

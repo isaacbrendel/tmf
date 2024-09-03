@@ -1,31 +1,12 @@
-<!-- home/templates/home/feedback.html -->
-{%load static%}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <header>
-        <h1>Give Us Your Feedback</h1>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home:members' %}">Members</a></li>
-                <li><a href="{% url 'home:services' %}">Services</a></li>
-            </ul>
-        </nav>
-    </header>
+{% extends 'home/index.html' %}
 
-    <div class="container">
-        <h2>Feedback Form</h2>
-        <form method="post" action="{% url 'feedback:feedback_form_view' %}" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Submit Feedback</button>
-        </form>
-    </div>
-</body>
-</html>
+{% block title %}Feedback{% endblock %}
+
+{% block content %}
+<h2>Leave Your Feedback</h2>
+<form method="post" action="{% url 'home:feedback' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit Feedback</button>
+</form>
+{% endblock %}

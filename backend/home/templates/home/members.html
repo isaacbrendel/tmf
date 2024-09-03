@@ -1,31 +1,12 @@
-<!-- home/templates/home/members.html -->
-{%load static%}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Members</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <header>
-        <h1>Members Area</h1>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home:services' %}">Services</a></li>
-                <li><a href="{% url 'home:feedback' %}">Feedback</a></li>
-            </ul>
-        </nav>
-    </header>
+{% extends 'home/index.html' %}
 
-    <div class="container">
-        <h2>Member Registration</h2>
-        <form method="post" action="{% url 'members:member_form_view' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Register</button>
-        </form>
-    </div>
-</body>
-</html>
+{% block title %}Members{% endblock %}
+
+{% block content %}
+<h2>Member Registration</h2>
+<form method="post" action="{% url 'home:members' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+</form>
+{% endblock %}
