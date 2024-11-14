@@ -24,12 +24,12 @@ urlpatterns = [
 
     # Dashboard Section - Everything here is under dashboard
     path('dashboard/', include([
-        path('', include('dashboard.urls')),  # Dashboard root
-        path('members/', include('members.urls')),  # Dashboard members
-        path('services/', include('services.urls')),  # Dashboard services
-        path('feedback/', include('feedback.urls')),  # Dashboard feedback
-        path('tasks/', include('tasks.urls')),  # Dashboard tasks
-        path('assets/', include('assets.urls')),  # Dashboard assets
-        path('employees/', include('employees.urls')),  # Dashboard employees
+        path('', include('backend.dashboard.urls')),  # Dashboard root
+        path('members/', include('backend.members.urls')),  # Dashboard members
+        path('services/', include('backend.services.urls')),  # Dashboard services
+        path('feedback/', include('backend.feedback.urls')),  # Dashboard feedback
+        path('tasks/', include('backend.tasks.urls')),  # Dashboard tasks
+        path('assets/', include('backend.assets.urls')),  # Dashboard assets
+        path('employees/', include('backend.employees.urls')),  # Dashboard employees
     ])),
 ]
