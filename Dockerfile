@@ -1,23 +1,25 @@
 # Dockerfile for TMF Django App
 FROM python:3.10
 
-# Set environment variables for PostgreSQL
+# Set environment variables
 ENV POSTGRES_DB=tmf
 ENV POSTGRES_USER=tmf_admin
 ENV POSTGRES_PASSWORD=Alexander1377
+ENV PYTHONUNBUFFERED=1
 
-# Install PostgreSQL client and dependencies
+# Install PostgreSQL client
 RUN apt-get update && \
     apt-get install -y postgresql-client
 
-# Set the working directory
-WORKDIR /app
+# Set working directory in Render
+WORKDIR /opt/render/project/src
 
-# Copy the entire backend directory
+# Copy backend directory contents
 COPY backend/ .
 
 # Install dependencies
-RUN pip install -r requirements.txt
+# Make sure requirements.txt is present in the backend directory
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Run Django with Gunicorn in production
-CMD ["gunicorn", "backend.wsgi:application", "--bind", "0.0.0.0:8000"]
+# Run Django
+CMD ["python", "manage.py", "runserver", "0.0.0.0:$PORT"]
