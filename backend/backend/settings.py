@@ -43,12 +43,12 @@ INSTALLED_APPS = [
     
      # Your apps
     'backend.members',
-    'services',
-    'feedback',
-    'tasks',
-    'assets',
-    'employees',
-    'home',
+    'backend.services',
+    'backend.feedback',
+    'backend.tasks',
+    'backend.assets',
+    'backend.employees',
+    'backend.home',
     'corsheaders',
     
     "django.contrib.admin",
