@@ -3,21 +3,25 @@ FROM python:3.11
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
 ENV PORT=8000
+ENV PYTHONPATH=/opt/render/project/src/backend
 
-# Set working directory to Render's expected path
-WORKDIR /opt/render/project/src
-ENV PYTHONPATH="${PYTHONPATH}:/opt/render/project/src"
-
+# Set working directory
+WORKDIR /opt/render/project/src/backend
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y postgresql-client
 
-# Copy requirements first for caching
+# Copy requirements first (assuming it's in the project root)
 COPY requirements.txt .
-RUN pip install -r requirements.txt
 
-# Copy the entire project directory
+# Install Python dependencies
+RUN pip install --upgrade --force-reinstall -r requirements.txt
+
+RUN ls -R /opt/render/project/src/backend
+
+
+# Copy the entire project into the container
 COPY . .
 
 # Command to run
-CMD ["gunicorn", "backend.backend.wsgi:application", "--bind", "0.0.0.0:$PORT"]
+CMD ["gunicorn", "backend.wsgi:application", "--bind", "0.0.0.0:$PORT"]
