@@ -42,7 +42,7 @@ LOGIN_URL = 'employees:login'
 INSTALLED_APPS = [
     
      # Your apps
-    'members',
+    'backend.members',
     'services',
     'feedback',
     'tasks',
