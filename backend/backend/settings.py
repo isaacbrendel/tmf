@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'backend.employees',
     'backend.home',
     'corsheaders',
+    'backend.dashboard',
     
     "django.contrib.admin",
     "django.contrib.auth",
