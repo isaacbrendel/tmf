@@ -3,10 +3,10 @@ FROM python:3.11
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
 ENV PORT=8000
-ENV PYTHONPATH=/opt/render/project/src/backend
+ENV PYTHONPATH=/opt/render/project/src
 
-# Set working directory
-WORKDIR /opt/render/project/src/backend
+# Set working directory to the project root
+WORKDIR /opt/render/project/src
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y postgresql-client
@@ -16,9 +16,6 @@ COPY requirements.txt .
 
 # Install Python dependencies
 RUN pip install --upgrade --force-reinstall -r requirements.txt
-
-RUN ls -R /opt/render/project/src/backend
-
 
 # Copy the entire project into the container
 COPY . .
