@@ -1,7 +1,7 @@
 # tasks/models.py
 
 from django.db import models
-from employees.models import Employee
+from backend.employees.models import Employee
 
 class Task(models.Model):
     TO_DO = 'To Do'
