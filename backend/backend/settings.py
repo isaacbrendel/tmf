@@ -25,7 +25,8 @@ SECRET_KEY = "django-insecure-ncd@^2rynx_kv0_kkm#monfgt1zfygn)3_5!4r#@=&!ap&r565
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['twomittensfarm.com', 'www.twomittensfarm.com', 'localhost', '127.0.0.1']
+
 
 # backend/settings.py
 
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'assets',
     'employees',
     'home',
+    'corsheaders',
     
     "django.contrib.admin",
     "django.contrib.auth",
@@ -60,8 +62,17 @@ INSTALLED_APPS = [
 
     
 ]
+# Set allowed origins for CORS
+CORS_ALLOWED_ORIGINS = [
+    "https://twomittensfarm.com",
+    "http://localhost:5173",  # Local development for frontend, if applicable
+]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # Add this line before CommonMiddleware
+    'django.middleware.common.CommonMiddleware',
+    # Other middleware...
+    
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
