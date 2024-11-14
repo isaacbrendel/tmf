@@ -18,4 +18,4 @@ RUN pip install -r requirements.txt
 COPY backend/ .
 
 # Command to run
-CMD ["gunicorn", "backend.wsgi:application", "--bind", "0.0.0.0:$PORT"]
+CMD ["gunicorn", "backend.backend.wsgi:application", "--bind", "0.0.0.0:$PORT"]
