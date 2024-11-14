@@ -19,7 +19,7 @@ from django.urls import include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("home.urls")),  # Public-facing home page
+    path("", include("backend.home.urls")),  # Public-facing home page
     path('grappelli/', include('grappelli.urls')),  # Grappelli admin interface
 
     # Dashboard Section - Everything here is under dashboard
